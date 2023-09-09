@@ -18,7 +18,6 @@ SOURCES += \
 INCLUDEPATH += \
     ../FizzBuzzApp/
 
-#TODO: There's probably a better way to do this. Libraries?
 SOURCES += \
     ../FizzBuzzApp/FizzBuzz/FizzBuzz.cpp \
     ../FizzBuzzApp/FizzBuzzApp/FizzBuzzApp.cpp \
@@ -28,3 +27,6 @@ HEADERS += \
     ../FizzBuzzApp/FizzBuzz/FizzBuzz.h \
     ../FizzBuzzApp/FizzBuzzApp/FizzBuzzApp.h \
     ../FizzBuzzApp/MainWindow/MainWindow.h
+
+FORMS += \
+    ../FizzBuzzApp/MainWindow/MainWindow.ui
