@@ -1,5 +1,8 @@
 include(gtest_dependency.pri)
 
+SOURCEPATH = ../FizzBuzzApp
+include(../FizzBuzz.pri)
+
 QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -15,18 +18,9 @@ SOURCES += \
     tst_FizzBuzz.cpp \
     tst_FizzBuzzApp.cpp
 
-INCLUDEPATH += \
-    ../FizzBuzzApp/
+INCLUDEPATH += $${SOURCEPATH}/
 
-SOURCES += \
-    ../FizzBuzzApp/FizzBuzz/FizzBuzz.cpp \
-    ../FizzBuzzApp/FizzBuzzApp/FizzBuzzApp.cpp \
-    ../FizzBuzzApp/MainWindow/MainWindow.cpp
+TARGET = UnitTests
 
-HEADERS += \
-    ../FizzBuzzApp/FizzBuzz/FizzBuzz.h \
-    ../FizzBuzzApp/FizzBuzzApp/FizzBuzzApp.h \
-    ../FizzBuzzApp/MainWindow/MainWindow.h
-
-FORMS += \
-    ../FizzBuzzApp/MainWindow/MainWindow.ui
+unix:QMAKE_POST_LINK=./$$TARGET
+win32:QMAKE_POST_LINK=$${TARGET}.exe
