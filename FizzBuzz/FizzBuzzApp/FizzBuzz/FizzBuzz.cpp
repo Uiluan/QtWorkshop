@@ -2,6 +2,12 @@
 #include <QStringList>
 #include <iostream>
 
+namespace
+{
+constexpr int FIZZ_FACTOR = 3;
+constexpr int BUZZ_FACTOR = 5;
+}
+
 FizzBuzz::FizzBuzz(MainWindowInterface& window)
     : Window(&window)
 {
@@ -33,7 +39,7 @@ void FizzBuzz::OnCalculateButtonClicked(const int count)
 
 void FizzBuzz::AddFizzToStringIfNeeded(const int number, QString &numberString)
 {
-    if (number % 3 == 0)
+    if (number % FIZZ_FACTOR == 0)
     {
         numberString.append("Fizz");
     }
@@ -41,7 +47,7 @@ void FizzBuzz::AddFizzToStringIfNeeded(const int number, QString &numberString)
 
 void FizzBuzz::AddBuzzToStringIfNeeded(const int number, QString &numberString)
 {
-    if (number % 5 == 0)
+    if (number % BUZZ_FACTOR == 0)
     {
         numberString.append("Buzz");
     }
