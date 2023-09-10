@@ -1,51 +1,54 @@
 
 #include "FizzBuzz/FizzBuzz.h"
+#include "Mocks/MainWindowMock.h"
+#include <QListView>
 #include <QStringList>
 #include <gtest/gtest.h>
 #include <gmock/gmock-matchers.h>
 
 using namespace testing;
 
-TEST(FizzBuzzTests, GivenCountOneWhenDetermineOutputListCalledThenExpectedString)
+TEST(FizzBuzzTests, WhenRunCalledThenWindowIsShown)
 {
-    int testCount = 1;
-    FizzBuzz testObject;
-    QList<QString> expectedResult({"1"});
+    NiceMock<MainWindowMock> windowMock;
+    FizzBuzz testApp(windowMock);
 
-    QStringList actualResult = testObject.DetermineOutputList(testCount);
+    testApp.Run();
 
-    for(int i = 0; i < testCount; i++)
-    {
-        EXPECT_STREQ(actualResult.at(i).toUtf8().constData(), expectedResult.at(i).toUtf8().constData());
-    }
+    EXPECT_TRUE(windowMock.isVisible());
 }
 
-TEST(FizzBuzzTests, GivenCount5WhenDetermineOutputListCalledThenExpectedString)
+TEST(FizzBuzzTests, GivenCountOneWhenCalculateButtonClickedThenWindowListIsSetWithExpectedList)
 {
-    int testCount = 5;
-    FizzBuzz testObject;
-    QList<QString> expectedResult({"1", "2", "Fizz", "4", "Buzz"});
+    NiceMock<MainWindowMock> windowMock;
+    FizzBuzz testApp(windowMock);
+    QStringList expectedResult({"1"});
 
-    QStringList actualResult = testObject.DetermineOutputList(testCount);
+    EXPECT_CALL(windowMock, SetOutputList(expectedResult));
 
-    for(int i = 0; i < testCount; i++)
-    {
-        EXPECT_STREQ(actualResult.at(i).toUtf8().constData(), expectedResult.at(i).toUtf8().constData());
-    }
+    windowMock.EmitCalculateButtonClicked(1);
 }
 
-TEST(FizzBuzzTests, GivenCount15WhenDetermineOutputListCalledThenExpectedString)
+TEST(FizzBuzzTests, GivenCountFiveWhenCalculateButtonClickedThenWindowListIsSetWithExpectedList)
 {
-    int testCount = 15;
-    FizzBuzz testObject;
-    QList<QString> expectedResult({"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"});
+    NiceMock<MainWindowMock> windowMock;
+    FizzBuzz testApp(windowMock);
+    QStringList expectedResult({"1", "2", "Fizz", "4", "Buzz"});
 
-    QStringList actualResult = testObject.DetermineOutputList(testCount);
+    EXPECT_CALL(windowMock, SetOutputList(expectedResult));
 
-    for(int i = 0; i < testCount; i++)
-    {
-        EXPECT_STREQ(actualResult.at(i).toUtf8().constData(), expectedResult.at(i).toUtf8().constData());
-    }
+    windowMock.EmitCalculateButtonClicked(5);
+}
+
+TEST(FizzBuzzTests, GivenCountFifteenWhenCalculateButtonClickedThenWindowListIsSetWithExpectedList)
+{
+    NiceMock<MainWindowMock> windowMock;
+    FizzBuzz testApp(windowMock);
+    QStringList expectedResult({"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"});
+
+    EXPECT_CALL(windowMock, SetOutputList(expectedResult));
+
+    windowMock.EmitCalculateButtonClicked(15);
 }
 
 

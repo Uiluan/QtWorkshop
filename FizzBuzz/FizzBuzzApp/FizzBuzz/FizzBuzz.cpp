@@ -2,12 +2,18 @@
 #include <QStringList>
 #include <iostream>
 
-FizzBuzz::FizzBuzz()
+FizzBuzz::FizzBuzz(MainWindowInterface& window)
+    : Window(&window)
 {
-
+    QObject::connect(Window, &MainWindowInterface::CalculateButtonClicked, this, &FizzBuzz::OnCalculateButtonClicked);
 }
 
-QStringList FizzBuzz::DetermineOutputList(const int count)
+void FizzBuzz::Run()
+{
+    Window->show();
+}
+
+void FizzBuzz::OnCalculateButtonClicked(const int count)
 {
     QStringList list;
 
@@ -22,7 +28,7 @@ QStringList FizzBuzz::DetermineOutputList(const int count)
         list.append(numberString);
     }
 
-    return list;
+    Window->SetOutputList(list);
 }
 
 void FizzBuzz::AddFizzToStringIfNeeded(const int number, QString &numberString)

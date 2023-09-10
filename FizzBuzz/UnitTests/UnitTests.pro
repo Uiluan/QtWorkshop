@@ -16,7 +16,10 @@ CONFIG += thread
 SOURCES += \
     main.cpp \
     tst_FizzBuzz.cpp \
-    tst_FizzBuzzApp.cpp
+    Mocks/MainWindowMock.cpp
+
+HEADERS += \
+    Mocks/MainWindowMock.h
 
 INCLUDEPATH += $${SOURCEPATH}/
 

@@ -2,9 +2,8 @@
 #include "ui_MainWindow.h"
 #include <QPushButton>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , Ui(new Ui::MainWindow)
+MainWindow::MainWindow()
+    : Ui(new Ui::MainWindow)
     , ListViewModel(new QStringListModel(this))
 {
     Ui->setupUi(this);

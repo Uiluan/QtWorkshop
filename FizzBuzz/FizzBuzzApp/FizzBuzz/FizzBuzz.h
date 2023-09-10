@@ -1,15 +1,21 @@
 #ifndef FIZZBUZZ_H
 #define FIZZBUZZ_H
 
+#include "MainWindow/MainWindowInterface.h"
 #include <QString>
 
-class FizzBuzz
+class FizzBuzz : public QObject
 {
+    Q_OBJECT
 public:
-    FizzBuzz();
-    QStringList DetermineOutputList(const int count);
+    FizzBuzz(MainWindowInterface& window);
+    void Run();
+
+private slots:
+    void OnCalculateButtonClicked(const int count);
 
 private:
+    MainWindowInterface *Window;
     static void AddFizzToStringIfNeeded(const int number, QString &numberString);
     static void AddBuzzToStringIfNeeded(const int number, QString &numberString);
     static void SetStringToNumberIfNotSetYet(const int number, QString &numberString);

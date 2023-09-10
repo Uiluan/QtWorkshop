@@ -1,24 +1,21 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include "MainWindowInterface.h"
 #include <QStringListModel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public MainWindowInterface
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow();
     ~MainWindow();
-    void SetOutputList(QStringList& list);
-
-signals:
-    void CalculateButtonClicked(const int count);
+    void SetOutputList(QStringList& list) override;
 
 private slots:
     void OnCalculateButtonClicked();
