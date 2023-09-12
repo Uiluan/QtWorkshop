@@ -16,6 +16,7 @@ CONFIG += thread
 SOURCES += \
     main.cpp \
     tst_FizzBuzz.cpp \
+    tst_MainWindow.cpp \
     Mocks/MainWindowMock.cpp
 
 HEADERS += \
@@ -26,4 +27,4 @@ INCLUDEPATH += $${SOURCEPATH}/
 TARGET = UnitTests
 
 unix:QMAKE_POST_LINK=./$$TARGET
-win32:QMAKE_POST_LINK=$${TARGET}.exe
+win32:QMAKE_POST_LINK=./debug/$${TARGET}.exe
