@@ -1,24 +1,20 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
+#include "MainWindowInterface.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public MainWindowInterface
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow();
     ~MainWindow();
-    void SetOutputString(const QString& message);
-
-signals:
-    void EncryptButtonClicked(const QString keyword, const QString message);
-    void DecryptButtonClicked(const QString keyword, const QString message);
+    void SetOutputString(const QString& message) override;
 
 private slots:
     void OnEncryptButtonClicked();

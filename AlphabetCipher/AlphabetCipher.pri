@@ -4,6 +4,7 @@ SOURCES += \
 
 HEADERS += \
     $${SOURCEPATH}/AlphabetCipher/AlphabetCipher.h \
+    $${SOURCEPATH}/MainWindow/MainWindowInterface.h \
     $${SOURCEPATH}/MainWindow/MainWindow.h
 
 FORMS += \

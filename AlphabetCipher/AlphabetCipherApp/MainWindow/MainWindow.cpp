@@ -1,9 +1,8 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , Ui(new Ui::MainWindow)
+MainWindow::MainWindow()
+    : Ui(new Ui::MainWindow)
 {
     Ui->setupUi(this);
     SetUpHeaders();
