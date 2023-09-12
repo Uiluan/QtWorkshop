@@ -4,6 +4,7 @@ SOURCEPATH = ../FizzBuzzApp
 include(../FizzBuzz.pri)
 
 QT += core gui
+QT += testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

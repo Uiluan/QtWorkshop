@@ -14,6 +14,7 @@ MainWindow::MainWindow()
 MainWindow::~MainWindow()
 {
     delete Ui;
+    delete ListViewModel;
 }
 
 void MainWindow::SetOutputList(QStringList &testList)
