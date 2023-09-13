@@ -1,7 +1,7 @@
 include(gtest_dependency.pri)
 
-SOURCEPATH = ../FizzBuzzApp
-include(../FizzBuzz.pri)
+SOURCEPATH = ../AlphabetCipherApp
+include(../AlphabetCipher.pri)
 
 QT += core gui
 QT += testlib
@@ -15,8 +15,12 @@ CONFIG += console
 CONFIG += thread
 
 SOURCES += \
-        main.cpp \
-        tst_sampleunittest.cpp
+    main.cpp \
+    Mocks/MainWindowMock.cpp \
+    tst_AlphabetCipher.cpp
+
+HEADERS += \
+    Mocks/MainWindowMock.h
 
 INCLUDEPATH += $${SOURCEPATH}/
 

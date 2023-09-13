@@ -1,6 +1,6 @@
 #include "AlphabetCipher.h"
 
-AlphabetCipher::AlphabetCipher(MainWindow& window, QObject *parent)
+AlphabetCipher::AlphabetCipher(MainWindowInterface& window, QObject *parent)
     : QObject(parent)
     , Window(&window)
     , EncryptionMap()
@@ -8,8 +8,8 @@ AlphabetCipher::AlphabetCipher(MainWindow& window, QObject *parent)
     , Keyword()
     , Message()
 {
-    connect(Window, &MainWindow::EncryptButtonClicked, this, &AlphabetCipher::OnEncryptButtonClicked);
-    connect(Window, &MainWindow::DecryptButtonClicked, this, &AlphabetCipher::OnDecryptButtonClicked);
+    connect(Window, &MainWindowInterface::EncryptButtonClicked, this, &AlphabetCipher::OnEncryptButtonClicked);
+    connect(Window, &MainWindowInterface::DecryptButtonClicked, this, &AlphabetCipher::OnDecryptButtonClicked);
 
     EncryptionMap =
         {

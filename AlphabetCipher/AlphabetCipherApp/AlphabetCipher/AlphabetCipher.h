@@ -1,7 +1,7 @@
 #ifndef ALPHABETCIPHER_H
 #define ALPHABETCIPHER_H
 
-#include "MainWindow/MainWindow.h"
+#include "MainWindow/MainWindowInterface.h"
 #include <QMap>
 
 class AlphabetCipher : public QObject
@@ -9,7 +9,7 @@ class AlphabetCipher : public QObject
     Q_OBJECT
 
 public:
-    AlphabetCipher(MainWindow& window, QObject *parent = nullptr);
+    AlphabetCipher(MainWindowInterface& window, QObject *parent = nullptr);
     void Run();
 
 private slots:
@@ -22,7 +22,7 @@ private:
     QString GetEncryptionValue(QChar keyChar, QChar messageChar);
     QString GetDecryptionValue(QChar keyChar, QChar messageChar);
 
-    MainWindow *Window;
+    MainWindowInterface *Window;
     QMap<QChar, QMap<QChar, QChar>> EncryptionMap;
     QMap<QChar, QMap<QChar, QChar>> DecryptionMap;
     QString Keyword;
