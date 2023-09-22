@@ -27,5 +27,5 @@ INCLUDEPATH += $${SOURCEPATH}/
 
 TARGET = UnitTests
 
-unix:QMAKE_POST_LINK=./$$TARGET
-win32:QMAKE_POST_LINK=./debug/$${TARGET}.exe
+unix:QMAKE_POST_LINK=./$$TARGET --gtest_color=yes
+win32:QMAKE_POST_LINK=./debug/$${TARGET}.exe --gtest_color=yes
