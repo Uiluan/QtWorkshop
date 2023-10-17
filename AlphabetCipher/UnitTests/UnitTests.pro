@@ -17,7 +17,8 @@ CONFIG += thread
 SOURCES += \
     main.cpp \
     Mocks/MainWindowMock.cpp \
-    tst_AlphabetCipher.cpp
+    tst_AlphabetCipher.cpp \
+    tst_MainWindowTest.cpp
 
 HEADERS += \
     Mocks/MainWindowMock.h
