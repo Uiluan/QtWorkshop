@@ -50,15 +50,15 @@ void AlphabetCipher::Run()
 
 void AlphabetCipher::OnEncryptButtonClicked(QString keyword, QString message)
 {
-    Keyword = keyword;
-    Message = message;
+    Keyword = keyword.toLower().remove(" ");
+    Message = message.toLower().remove(" ");
     BuildResultMessage(&AlphabetCipher::GetEncryptionValue);
 }
 
 void AlphabetCipher::OnDecryptButtonClicked(const QString keyword, const QString message)
 {
-    Keyword = keyword;
-    Message = message;
+    Keyword = keyword.toLower().remove(" ");
+    Message = message.toLower().remove(" ");
     BuildResultMessage(&AlphabetCipher::GetDecryptionValue);
 }
 
