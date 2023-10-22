@@ -20,12 +20,6 @@ public:
     AlphabetCipher TestApp;
 };
 
-/*
- * TODO
- * Run shows window
- * when encrypt button clicked SetOutputString is called with expected encryption (2x)
- * when decrypt button clicked SetOutputString is called with expected decryption (2x)
- */
 TEST_F(AlphabetCipherTest, WhenRunCalledThenWindowIsShown)
 {
     TestApp.Run();
@@ -77,3 +71,91 @@ TEST_F(AlphabetCipherTest, GivenKeyBlueWhenDecryptClickedThenSetOutputStringIsCa
     WindowMock.EmitDecryptButtonClicked(keyword, message);
 }
 
+// TODO: Add functionality to allow handling spaces and capital letters
+TEST_F(AlphabetCipherTest, GivenUppercaseKeyWhenEncryptClickedThenSetOutputStringIsCalledWithLowercaseEncryptedString)
+{
+    QString expectedEncryption = "crncmlrxstg";
+    QString keyword = "YELLOW";
+    QString message = "encryptthis";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitEncryptButtonClicked(keyword, message);
+}
+
+TEST_F(AlphabetCipherTest, GivenUppercaseMessageWhenEncryptClickedThenSetOutputStringIsCalledWithLowercaseEncryptedString)
+{
+    QString expectedEncryption = "crncmlrxstg";
+    QString keyword = "YELLOW";
+    QString message = "ENCRYPTTHIS";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitEncryptButtonClicked(keyword, message);
+}
+
+TEST_F(AlphabetCipherTest, GivenUppercaseKeyWhenDecryptClickedThenSetOutputStringIsCalledWithLowercaseDecryptedString)
+{
+    QString expectedEncryption = "encryptthis";
+    QString keyword = "YELLOW";
+    QString message = "crncmlrxstg";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitDecryptButtonClicked(keyword, message);
+}
+
+TEST_F(AlphabetCipherTest, GivenUppercaseMessageWhenDecryptClickedThenSetOutputStringIsCalledWithLowercaseDecryptedString)
+{
+    QString expectedEncryption = "hellofriend";
+    QString keyword = "blue";
+    QString message = "IPFPPQLMFYX";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitDecryptButtonClicked(keyword, message);
+}
+
+TEST_F(AlphabetCipherTest, GivenKeyWithSpacesWhenEncryptClickedThenSetOutputStringIsCalledWithEncryptedStringUsingKeyWithRemovedSpaces)
+{
+    QString expectedEncryption = "crncmlrxstg";
+    QString keyword = "y ell   ow";
+    QString message = "encryptthis";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitEncryptButtonClicked(keyword, message);
+}
+
+TEST_F(AlphabetCipherTest, GivenMessageWithSpacesWhenEncryptClickedThenSetOutputStringIsCalledWithEncryptedStringWithRemovedSpaces)
+{
+    QString expectedEncryption = "ipfppqlmfyx";
+    QString keyword = "bl ue";
+    QString message = "hello   friend";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitEncryptButtonClicked(keyword, message);
+}
+
+TEST_F(AlphabetCipherTest, GivenKeyWithSpacesWhenDecryptClickedThenSetOutputStringIsCalledWithDecryptedStringUsingKeyWithRemovedSpaces)
+{
+    QString expectedEncryption = "encryptthis";
+    QString keyword = "yel low";
+    QString message = "crncmlrxstg";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitDecryptButtonClicked(keyword, message);
+}
+
+TEST_F(AlphabetCipherTest, GivenMessageWithSpacesWhenDecryptClickedThenSetOutputStringIsCalledWithDecryptedStringWithRemovedSpaces)
+{
+    QString expectedEncryption = "hellofriend";
+    QString keyword = "blue ";
+    QString message = "ipfp pqlmf  yx";
+
+    EXPECT_CALL(WindowMock, SetOutputString(expectedEncryption));
+
+    WindowMock.EmitDecryptButtonClicked(keyword, message);
+}
