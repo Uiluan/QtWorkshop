@@ -25,6 +25,6 @@ void MainWindow::SetOutputList(QStringList &testList)
 
 void MainWindow::OnCalculateButtonClicked()
 {
-    emit CalculateButtonClicked(Ui->CountEntryBox->value(), 3, 5);
+    emit CalculateButtonClicked(Ui->CountEntryBox->value(), Ui->FizzValueSpinBox->value(), Ui->BuzzValueSpinBox->value());
 }
 

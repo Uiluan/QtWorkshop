@@ -12,12 +12,12 @@ public:
     void Run();
 
 private slots:
-    void OnCalculateButtonClicked(const int count);
+    void OnCalculateButtonClicked(const int count, const int fizzValue, const int buzzValue);
 
 private:
     MainWindowInterface *Window;
-    static void AddFizzToStringIfNeeded(const int number, QString &numberString);
-    static void AddBuzzToStringIfNeeded(const int number, QString &numberString);
+    static void AddFizzToStringIfNeeded(const int number, const int fizzValue, QString &numberString);
+    static void AddBuzzToStringIfNeeded(const int number, const int buzzValue, QString &numberString);
     static void SetStringToNumberIfNotSetYet(const int number, QString &numberString);
 };
 
