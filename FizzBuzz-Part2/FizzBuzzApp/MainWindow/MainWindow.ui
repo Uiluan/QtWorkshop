@@ -195,6 +195,9 @@
                     <height>25</height>
                    </size>
                   </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
                  </widget>
                 </item>
                </layout>
@@ -244,6 +247,9 @@
                     <width>75</width>
                     <height>25</height>
                    </size>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
                   </property>
                  </widget>
                 </item>
