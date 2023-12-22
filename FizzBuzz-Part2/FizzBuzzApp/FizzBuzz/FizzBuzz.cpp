@@ -2,12 +2,6 @@
 #include <QStringList>
 #include <iostream>
 
-namespace
-{
-constexpr int FIZZ_FACTOR = 3;
-constexpr int BUZZ_FACTOR = 5;
-}
-
 FizzBuzz::FizzBuzz(MainWindowInterface& window)
     : Window(&window)
 {
@@ -19,7 +13,7 @@ void FizzBuzz::Run()
     Window->show();
 }
 
-void FizzBuzz::OnCalculateButtonClicked(const int count)
+void FizzBuzz::OnCalculateButtonClicked(const int count, const int fizzValue, const int buzzValue)
 {
     QStringList list;
 
@@ -27,8 +21,8 @@ void FizzBuzz::OnCalculateButtonClicked(const int count)
     {
         QString numberString;
 
-        AddFizzToStringIfNeeded(number, numberString);
-        AddBuzzToStringIfNeeded(number, numberString);
+        AddFizzToStringIfNeeded(number, fizzValue, numberString);
+        AddBuzzToStringIfNeeded(number, buzzValue, numberString);
         SetStringToNumberIfNotSetYet(number, numberString);
 
         list.append(numberString);
@@ -37,17 +31,17 @@ void FizzBuzz::OnCalculateButtonClicked(const int count)
     Window->SetOutputList(list);
 }
 
-void FizzBuzz::AddFizzToStringIfNeeded(const int number, QString &numberString)
+void FizzBuzz::AddFizzToStringIfNeeded(const int number, const int fizzValue, QString &numberString)
 {
-    if (number % FIZZ_FACTOR == 0)
+    if (number % fizzValue == 0)
     {
         numberString.append("Fizz");
     }
 }
 
-void FizzBuzz::AddBuzzToStringIfNeeded(const int number, QString &numberString)
+void FizzBuzz::AddBuzzToStringIfNeeded(const int number, const int buzzValue, QString &numberString)
 {
-    if (number % BUZZ_FACTOR == 0)
+    if (number % buzzValue == 0)
     {
         numberString.append("Buzz");
     }
